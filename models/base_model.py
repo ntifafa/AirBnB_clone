@@ -46,7 +46,6 @@ class BaseModel:
             keys/values of __dict__ instance
         """
         my_dict = dict(self.__dict__)
-        my_dict["__class__"] = self.__class__.__name__
         my_dict["updated_at"] = my_dict["updated_at"].isoformat()
         my_dict["created_at"] = my_dict["created_at"].isoformat()
 
