@@ -24,14 +24,16 @@ class FileStorage:
                 obj - an instance object
         """
         key = f"{obj.__class__.__name__}.{obj.id}"
-        dict_val = obj
-        FileStorage.__objects[key] = dict_val
-    
+        FileStorage.__objects[key] = obj
+
     def save(self):
         """serializes __objects to JSON file"""
         obj_dict = {}
         for key, val in FileStorage.__objects.items():
-            obj_dict[key] = val.to_dict()
+            if hasattr(val, 'to_dict') and callable(val.to_dict):
+                obj_dict[key] = val.to_dict()
+        else:
+            obj_dict[key] = str(val)
         
         with open(FileStorage.__file_path, mode='w', encoding="UTF8") as fd:
             json.dump(obj_dict, fd)
@@ -41,6 +43,6 @@ class FileStorage:
         try:
             with open(FileStorage.__file_path, encoding="UTF8") as fd:
                 FileStorage.__objects = json.load(fd)
-    
+
         except FileNotFoundError:
             pass
