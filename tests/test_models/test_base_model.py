@@ -9,18 +9,18 @@ Unittest ests for the BaseModel Class
 class TestBaseModel(unittest.TestCase):
     """ TestBaseMode class """
 
-    def test_uuid (self):
+    def test_uuid(self):
         """
         Test cases for uuid
         Two instances are created of the BaseModel class
         to test their uuids
         """
-        bm1= BaseModel()
-        bm2= BaseModel()
+        bm1 = BaseModel()
+        bm2 = BaseModel()
         self.assertIsInstance(bm1, BaseModel)
         self.assertTrue(hasattr(bm1, "id"))
-        self.assertNotEqual(bm1.id , bm2.id)
-        self.assertIsInstance(bm1.id , str)
+        self.assertNotEqual(bm1.id, bm2.id)
+        self.assertIsInstance(bm1.id, str)
 
 # from models.base_model import BaseModel
 
@@ -34,5 +34,5 @@ class TestBaseModel(unittest.TestCase):
 # print(my_model_json)
 # print("JSON of my_model:")
 # for key in my_model_json.keys():
-#     print("\t{}: ({}) - {}".format(key, type(my_model_json[key]), my_model_json[key]))
-
+#     print("\t{}: ({}) - {}".format(key,
+# type(my_model_json[key]), my_model_json[key]))
