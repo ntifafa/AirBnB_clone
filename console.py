@@ -34,7 +34,7 @@ class HBNBCommand(cmd.Cmd):
         This is the help method of the 
         HBNBCommand class
         """
-        pass
+        print("This is the help documentation")
 
     def empty_line(self):
         """ 
