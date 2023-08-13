@@ -14,14 +14,14 @@ class HBNBCommand(cmd.Cmd):
 
     prompt = "(hbnb) "
 
-    def do_quit(self):
+    def do_quit(self, arg):
         """ 
         This is the quit method of the 
         HBNBCommand class
         """
         return True
 
-    def do_EOF(self):
+    def do_EOF(self, arg):
         """ 
         This is the EOF method of the 
         HBNBCommand class
@@ -29,12 +29,19 @@ class HBNBCommand(cmd.Cmd):
         print()
         return True
 
-    def do_help(self):
+    def do_help(self, arg):
         """ 
         This is the help method of the 
         HBNBCommand class
         """
         print("This is the help documentation")
+
+    def help_quit(self, arg):
+        """ 
+        This is the help_quit method of the 
+        HBNBCommand class
+        """
+        print("Quit command to exit the program")
 
     def empty_line(self):
         """ 
