@@ -30,7 +30,9 @@ class FileStorage:
         FileStorage.__objects[key] = obj
 
     def save(self):
-        """serializes __objects to JSON file"""
+        """serializes __objects to JSON file
+        first converts object to dictionary format
+        """
         obj_dict = {}
         for key, val in FileStorage.__objects.items():
             # print(f"{type(val)}")
@@ -45,9 +47,10 @@ class FileStorage:
         """deserializes the JSON file to __objects"""
         try:
             with open(FileStorage.__file_path, mode='r') as fd:
-                if fd.read() is None:
+                jstring = fd.read()
+                if jstring is None:
                     return
-                data = json.load(fd)
+                data = json.loads(jstring)
                 for key, obj_dict in data.items():
                     # class_name = obj_dict["__class__"]
                     obj = BaseModel(**obj_dict)
