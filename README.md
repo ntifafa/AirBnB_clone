@@ -1,6 +1,6 @@
 ### AirBnB Clone Project - Command Interpreter README
 
-Description of the Project
+## Description of the Project
 Welcome to the AirBnB Clone Project! This project is the first step towards building a full web application that emulates the functionalities of Airbnb. The main objective of this phase is to develop a command interpreter that allows you to manage AirBnB objects efficiently. By completing this step, you'll set the foundation for the subsequent phases, which involve HTML/CSS templating, database storage, API integration, and front-end development.
 
 ## The key goals of this project are as follows:
