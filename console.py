@@ -73,7 +73,7 @@ class HBNBCommand(cmd.Cmd):
         if not args:
             print("** class name missing **")
             return
-
+        # args[0] is the class name
         class_name = args[0]
         if class_name not in self.valid_class_names():
             print("** class doesn't exist **")
@@ -82,7 +82,7 @@ class HBNBCommand(cmd.Cmd):
         if len(args) < 2:
             print("** instance id missing **")
             return
-
+        # args[1] is the instance id
         instance_id = args[1]
         instance_key = f"{class_name}.{instance_id}"
         all_objects = models.storage.all()
@@ -92,6 +92,37 @@ class HBNBCommand(cmd.Cmd):
             return
 
         print(all_objects[instance_key])
+
+    def do_destroy(self, arg):
+        """
+        Deletes an instance based on 
+        class name and class id
+        """
+        args = arg.split()
+
+        if not args:
+            print("** class name missing **")
+            return
+        # args[0] is the class name
+        class_name = args[0]
+        if class_name not in self.valid_class_names():
+            print("** class doesn't exist **")
+            return
+
+        if len(args) < 2:
+            print("** instance id missing **")
+            return
+        # args[1] is the instance id
+        instance_id = args[1]
+        instance_key = f"{class_name}.{instance_id}"
+        all_objects = models.storage.all()
+
+        if instance_key not in all_objects:
+            print("** no instance found **")
+            return
+
+        del all_objects[instance_key]
+        models.storage.save()
 
     def valid_class_names(self):
         """Return a list of valid class names"""
