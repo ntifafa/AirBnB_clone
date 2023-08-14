@@ -95,7 +95,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_destroy(self, argum):
         """
-        Deletes an instance based on 
+        Deletes an instance based on
         class name and class id
         """
         argums = argum.split()
@@ -123,6 +123,34 @@ class HBNBCommand(cmd.Cmd):
 
         del all_objects[instance_key]
         models.storage.save()
+
+    def do_all(self, argum):
+        """
+        Print string representations of all instances
+        Filter to get only the ones that begin with the
+        class name.id
+        """
+        class_name = argum.strip()
+
+        if class_name and class_name not in self.valid_class_names():
+            print("** class doesn't exist **")
+            return
+
+        all_objects = models.storage.all()
+        # if class_name:
+        #     filtered_objs = [str(obj) for key, obj in all_objects.items(
+        #     ) if key.startswith(class_name + ".")]
+        # else:
+        #     filtered_objs = [str(obj) for obj in all_objects.values()]
+        if class_name:
+            for key, obj in all_objects.items():
+                if key.startswith(class_name + "."):
+                    filtered_objs = str(obj)
+        else:
+            for obj in all_objects.values():
+                filtered_objs = str(obj)
+
+        print(filtered_objs)
 
     def valid_class_names(self):
         """Return a list of valid class names"""
