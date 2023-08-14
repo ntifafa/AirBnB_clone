@@ -16,14 +16,14 @@ class HBNBCommand(cmd.Cmd):
 
     prompt = "(hbnb) "
 
-    def do_quit(self, arg):
+    def do_quit(self, argum):
         """
         This is the quit method of the
         HBNBCommand class
         """
         return True
 
-    def do_EOF(self, arg):
+    def do_EOF(self, argum):
         """
         This is the EOF method of the
         HBNBCommand class
@@ -45,17 +45,17 @@ class HBNBCommand(cmd.Cmd):
         """
         pass
 
-    def do_create(self, arg):
+    def do_create(self, argum):
         """
         Create a new instance of BaseModel,
         save it, and print the id
         """
-        args = arg.split()
+        argums = argum.split()
 
-        if not args:
+        if not argums:
             print("** class name missing **")
             return
-        class_name = args[0]
+        class_name = argums[0]
         if class_name not in self.valid_class_names():
             print("** class doesn't exist **")
             return
@@ -64,26 +64,26 @@ class HBNBCommand(cmd.Cmd):
         new_instance.save()
         print(new_instance.id)
 
-    def do_show(self, arg):
+    def do_show(self, argum):
         """
         Prints the string representation of an instance
         """
-        args = arg.split()
+        argums = argum.split()
 
-        if not args:
+        if not argums:
             print("** class name missing **")
             return
-        # args[0] is the class name
-        class_name = args[0]
+        # argums[0] is the class name
+        class_name = argums[0]
         if class_name not in self.valid_class_names():
             print("** class doesn't exist **")
             return
 
-        if len(args) < 2:
+        if len(argums) < 2:
             print("** instance id missing **")
             return
-        # args[1] is the instance id
-        instance_id = args[1]
+        # argums[1] is the instance id
+        instance_id = argums[1]
         instance_key = f"{class_name}.{instance_id}"
         all_objects = models.storage.all()
 
@@ -93,27 +93,27 @@ class HBNBCommand(cmd.Cmd):
 
         print(all_objects[instance_key])
 
-    def do_destroy(self, arg):
+    def do_destroy(self, argum):
         """
         Deletes an instance based on 
         class name and class id
         """
-        args = arg.split()
+        argums = argum.split()
 
-        if not args:
+        if not argums:
             print("** class name missing **")
             return
-        # args[0] is the class name
-        class_name = args[0]
+        # argums[0] is the class name
+        class_name = argums[0]
         if class_name not in self.valid_class_names():
             print("** class doesn't exist **")
             return
 
-        if len(args) < 2:
+        if len(argums) < 2:
             print("** instance id missing **")
             return
-        # args[1] is the instance id
-        instance_id = args[1]
+        # argums[1] is the instance id
+        instance_id = argums[1]
         instance_key = f"{class_name}.{instance_id}"
         all_objects = models.storage.all()
 
