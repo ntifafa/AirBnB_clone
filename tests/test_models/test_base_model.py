@@ -2,7 +2,8 @@
 """
 Unittest ests for the BaseModel Class
 """
-import unittest, datetime
+import unittest
+import datetime
 from models.base_model import BaseModel
 
 
@@ -32,7 +33,8 @@ class TestBaseModel(unittest.TestCase):
         self.assertIsInstance(self.base_model.updated_at, datetime.datetime)
 
     def test_str_representation(self):
-        expected_str = f"[{self.base_model.__class__.__name__}] ({self.base_model.id}) {self.base_model.__dict__}"
+        expected_str = f"[{self.base_model.__class__.__name__}]({
+            self.base_model.id}) {self.base_model.__dict__}"
         self.assertEqual(str(self.base_model), expected_str)
 
     def test_save_updates_updated_at(self):
@@ -51,8 +53,11 @@ class TestBaseModel(unittest.TestCase):
 
     def test_to_dict_contains_isoformat_dates(self):
         obj_dict = self.base_model.to_dict()
-        self.assertEqual(obj_dict['created_at'], self.base_model.created_at.isoformat())
-        self.assertEqual(obj_dict['updated_at'], self.base_model.updated_at.isoformat())
+        self.assertEqual(obj_dict['created_at'],
+                         self.base_model.created_at.isoformat())
+        self.assertEqual(obj_dict['updated_at'],
+                         self.base_model.updated_at.isoformat())
+
 
 if __name__ == '__main__':
     unittest.main()

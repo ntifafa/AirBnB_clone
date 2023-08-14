@@ -2,7 +2,9 @@
 """
 Unittest tests for the FileStorage Class
 """
-import unittest, json, models
+import unittest
+import json
+import models
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
 
@@ -35,7 +37,7 @@ class TestFileStorage_instant(unittest.TestCase):
         # Create a dummy object
         dummy_obj = {'__class__': 'BaseModel', 'id': 'test_id'}
         self.storage.new(dummy_obj)
-        
+
         # Check if the dummy object is in the storage
         objects = self.storage.all()
         self.assertIn('BaseModel.test_id', objects)
@@ -44,11 +46,11 @@ class TestFileStorage_instant(unittest.TestCase):
         # Create a dummy object
         dummy_obj = {'__class__': 'BaseModel', 'id': 'test_id'}
         self.storage.new(dummy_obj)
-        
+
         # Save and reload the storage
         self.storage.save()
         self.storage.reload()
-        
+
         # Check if the reloaded storage contains the dummy object
         objects = self.storage.all()
         self.assertIn('BaseModel.test_id', objects)
@@ -57,11 +59,11 @@ class TestFileStorage_instant(unittest.TestCase):
         # Create a dummy object
         dummy_obj = {'__class__': 'BaseModel', 'id': 'test_id'}
         self.storage.new(dummy_obj)
-        
+
         # Save and reload the storage
         self.storage.save()
         self.storage.reload()
-        
+
         # Check if the content of the reloaded file matches the dummy object
         with open(self.temp_file_path, 'r') as file:
             data = json.load(file)
