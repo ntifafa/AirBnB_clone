@@ -4,6 +4,7 @@ This is the console or commandline interpreter's
 definition file
 """
 import cmd
+from models.base_model import BaseModel
 
 
 class HBNBCommand(cmd.Cmd):
@@ -29,13 +30,6 @@ class HBNBCommand(cmd.Cmd):
         print()
         return True
 
-    # def do_help(self, arg):
-    #     """
-    #     This is the help method of the
-    #     HBNBCommand class
-    #     """
-    #     print("This is the help documentation")
-
     def help_quit(self):
         """
         This is the help_quit method of the
@@ -49,6 +43,29 @@ class HBNBCommand(cmd.Cmd):
         HBNBCommand class. Empty line + ENTER shouldn't execute anything
         """
         pass
+
+    def do_create(self, arg):
+        """
+        Create a new instance of BaseModel,
+        save it, and print the id
+        """
+        args = arg.split()
+
+        if not args:
+            print("** class name missing **")
+            return
+        class_name = args[0]
+        if class_name not in self.valid_class_names():
+            print("** class doesn't exist **")
+            return
+
+        new_instance = BaseModel()
+        new_instance.save()
+        print(new_instance.id)
+
+    def valid_class_names(self):
+        """Return a list of valid class names"""
+        return ["BaseModel"]
 
 
 if __name__ == '__main__':
