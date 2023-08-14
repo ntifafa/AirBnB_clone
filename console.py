@@ -1,9 +1,9 @@
 #!/usr/bin/python3
-import cmd
 """ 
 This is the console or commandline interpreter's
 definition file
 """
+import cmd
 
 
 class HBNBCommand(cmd.Cmd):
@@ -29,14 +29,14 @@ class HBNBCommand(cmd.Cmd):
         print()
         return True
 
-    def do_help(self, arg):
-        """ 
-        This is the help method of the 
-        HBNBCommand class
-        """
-        print("This is the help documentation")
+    # def do_help(self, arg):
+    #     """ 
+    #     This is the help method of the 
+    #     HBNBCommand class
+    #     """
+    #     print("This is the help documentation")
 
-    def help_quit(self, arg):
+    def help_quit(self):
         """ 
         This is the help_quit method of the 
         HBNBCommand class
