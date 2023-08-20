@@ -152,9 +152,53 @@ class HBNBCommand(cmd.Cmd):
 
         print(filtered_objs)
 
+    def do_update(self, argum):
+        """
+        Update an instance based on the
+        name of the class and the id
+        """
+        argums = argum.split()
+
+        if not argums:
+            print("** class name missing **")
+            return
+        
+        class_name = argums[0]
+        if class_name not in self.valid_class_names():
+            print("** class doesn't exist **")
+            return
+        
+        if len(argums) < 2:
+            print("** instance id missing **")
+            return
+        
+        instance_id = argums[1]
+        instance_key = f"{class_name}.{instance_id}"
+        all_objects = models.storage.all()
+        
+        if instance_key not in all_objects:
+            print("** no instance found **")
+            return
+        
+        if len(argums) < 3:
+            print("** attribute name missing **")
+            return
+        
+        attribute_name = argums[2]
+        if len(argums) < 4:
+            print("** value missing **")
+            return
+        
+        new_value = argums[3]
+        instance = all_objects[instance_key]
+        
+        """Update attribute"""
+        setattr(instance, attribute_name, new_value)
+        instance.save()
+
     def valid_class_names(self):
         """Return a list of valid class names"""
-        return ["BaseModel"]
+        return ["BaseModel", "User"]
 
 
 if __name__ == '__main__':
