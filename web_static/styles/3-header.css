@@ -1,0 +1,18 @@
+header {
+    background-color: white;
+    height: 70px;
+    width: 100%;
+    border-bottom: 1px solid #CCCCCC;
+
+}
+
+.logo {
+    margin-left: 20px;
+    width: 150px;
+    height: 70px;
+    /* Adjust as needed */
+    background-image: url('../images/favicon.png');
+    /* Path to your logo image */
+    background-size:100%;
+    background-position: center;
+}
