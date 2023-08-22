@@ -198,7 +198,7 @@ class HBNBCommand(cmd.Cmd):
 
     def valid_class_names(self):
         """Return a list of valid class names"""
-        return ["BaseModel", "User"]
+        return ["BaseModel", "Userto"]
 
 
 if __name__ == '__main__':
