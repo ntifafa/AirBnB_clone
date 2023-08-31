@@ -61,4 +61,4 @@ class FileStorage:
 
     def valid_class_names(self):
         """Return a list of valid class names"""
-        return ["BaseModel", "User"] 
+        return ["BaseModel", "User", "State", "City", "Amenity", "Place", "Review"] 
